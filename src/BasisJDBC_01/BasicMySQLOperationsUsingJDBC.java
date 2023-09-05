@@ -32,6 +32,8 @@ public class BasicMySQLOperationsUsingJDBC {
 
     public BasicMySQLOperationsUsingJDBC() throws SQLException {
     }
+
+    //update records
     static void updateStatement() throws SQLException{
         ptmt = BasicMySQLOperationsUsingJDBC.preparedStatement("update students set StudentName=? where id = ?");
         System.out.println("Enter id to change name: ");
@@ -41,13 +43,14 @@ public class BasicMySQLOperationsUsingJDBC {
         ptmt.setString(1, myScanner.nextLine());
         ptmt.executeUpdate();
     }
-
+    //delete records using id
     static void deleteStatement() throws SQLException{
         ptmt = BasicMySQLOperationsUsingJDBC.preparedStatement("delete from students where id=?;");
         System.out.print("Enter id to delete: ");
         ptmt.setInt(1,myScanner.nextInt());
         ptmt.executeUpdate();
     }
+    //insert name into records
 
     static void insertStatement() throws SQLException{
         ptmt = BasicMySQLOperationsUsingJDBC.preparedStatement("insert into students(StudentName) values (?);");
@@ -57,20 +60,22 @@ public class BasicMySQLOperationsUsingJDBC {
         System.out.println("Record Inserted");
     }
 
-    static void resultSet() throws SQLException{
+    static void selectStatement() throws SQLException{
         ResultSet rs = BasicMySQLOperationsUsingJDBC.resultSet("select * from students");
         ArrayList<Student> studArrayList = new ArrayList<>();
+        System.out.println();
         while (rs.next()){
             studArrayList.add(new Student(rs.getInt("id"),rs.getString("StudentName")));
         }
         System.out.println(studArrayList);
+
     }
 
     public static void main(String[] args) throws SQLException {
-//        BasicMySQLOperationsUsingJDBC.updateStatement();
-//        BasicMySQLOperationsUsingJDBC.deleteStatement();
-//        BasicMySQLOperationsUsingJDBC.insertStatement();
-//        BasicMySQLOperationsUsingJDBC.resultSet();
+        BasicMySQLOperationsUsingJDBC.updateStatement();
+        BasicMySQLOperationsUsingJDBC.deleteStatement();
+        BasicMySQLOperationsUsingJDBC.insertStatement();
+        BasicMySQLOperationsUsingJDBC.selectStatement();
 
     }
 }
