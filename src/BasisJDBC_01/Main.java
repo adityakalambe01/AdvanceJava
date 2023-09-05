@@ -24,7 +24,6 @@ public class Main
         Statement statement=connection.createStatement();
 
         statement.executeUpdate("insert into employess values(101,'aditya',900000)");
-
         System.out.println("Done");
 
     }
