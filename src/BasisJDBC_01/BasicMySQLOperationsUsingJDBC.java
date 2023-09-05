@@ -14,7 +14,7 @@ public class BasicMySQLOperationsUsingJDBC {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root");
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -29,10 +29,6 @@ public class BasicMySQLOperationsUsingJDBC {
     static ResultSet resultSet(String sql) throws SQLException{
         return statement().executeQuery(sql);
     }
-
-    public BasicMySQLOperationsUsingJDBC() throws SQLException {
-    }
-
     //update records
     static void updateStatement() throws SQLException{
         ptmt = BasicMySQLOperationsUsingJDBC.preparedStatement("update students set StudentName=? where id = ?");
@@ -51,7 +47,6 @@ public class BasicMySQLOperationsUsingJDBC {
         ptmt.executeUpdate();
     }
     //insert name into records
-
     static void insertStatement() throws SQLException{
         ptmt = BasicMySQLOperationsUsingJDBC.preparedStatement("insert into students(StudentName) values (?);");
         System.out.print("Enter name: ");
@@ -59,7 +54,7 @@ public class BasicMySQLOperationsUsingJDBC {
         ptmt.executeUpdate();
         System.out.println("Record Inserted");
     }
-
+    //select statement
     static void selectStatement() throws SQLException{
         ResultSet rs = BasicMySQLOperationsUsingJDBC.resultSet("select * from students");
         ArrayList<Student> studArrayList = new ArrayList<>();
@@ -70,7 +65,7 @@ public class BasicMySQLOperationsUsingJDBC {
         System.out.println(studArrayList);
 
     }
-
+    //Main method
     public static void main(String[] args) throws SQLException {
         BasicMySQLOperationsUsingJDBC.updateStatement();
         BasicMySQLOperationsUsingJDBC.deleteStatement();
