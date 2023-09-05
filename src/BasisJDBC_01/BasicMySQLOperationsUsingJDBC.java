@@ -46,7 +46,7 @@ public class BasicMySQLOperationsUsingJDBC {
         ptmt.setInt(1,myScanner.nextInt());
         ptmt.executeUpdate();
     }
-    //insert name into records
+    //insert records into table
     static void insertStatement() throws SQLException{
         ptmt = BasicMySQLOperationsUsingJDBC.preparedStatement("insert into students(StudentName) values (?);");
         System.out.print("Enter name: ");
