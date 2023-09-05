@@ -68,9 +68,9 @@ public class BasicMySQLOperationsUsingJDBC {
     //Main method
     public static void main(String[] args) throws SQLException {
         BasicMySQLOperationsUsingJDBC.updateStatement();
-//        BasicMySQLOperationsUsingJDBC.deleteStatement();
-//        BasicMySQLOperationsUsingJDBC.insertStatement();
-//        BasicMySQLOperationsUsingJDBC.selectStatement();
+        BasicMySQLOperationsUsingJDBC.deleteStatement();
+        BasicMySQLOperationsUsingJDBC.insertStatement();
+        BasicMySQLOperationsUsingJDBC.selectStatement();
 
     }
 }
