@@ -1,4 +1,4 @@
-package BasicJDBC_02;
+package Day02_BasicJDBC_ProductRetrieve;
 
 public class Product {
     private int id;
