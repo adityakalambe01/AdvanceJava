@@ -1,4 +1,4 @@
-package BasisJDBC_01;
+package BasicJDBC_01;
 
 import java.sql.*;
 import java.util.ArrayList;

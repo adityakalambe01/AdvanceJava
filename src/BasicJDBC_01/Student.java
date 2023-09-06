@@ -1,4 +1,4 @@
-package BasisJDBC_01;
+package BasicJDBC_01;
 
 public class Student {
     private int id;
