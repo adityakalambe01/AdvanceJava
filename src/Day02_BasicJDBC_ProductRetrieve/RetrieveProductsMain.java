@@ -1,10 +1,13 @@
 package Day02_BasicJDBC_ProductRetrieve;
-
 import java.sql.*;
 
-public class RetrieveProductsMain {
+import static Credentials.MySQL.*;
+
+public class RetrieveProductsMain{
+    private static final String database="ministore";
     public static Product getproducts(int pid) throws SQLException, ProductNotFoundException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ministore","root","root");
+
+        Connection connection = DriverManager.getConnection(url+database,username,password);
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * from product where pid="+pid);
         if(rs.next()){
