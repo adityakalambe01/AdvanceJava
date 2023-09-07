@@ -2,7 +2,7 @@ package Day02_BasicJDBC_ProductRetrieve;
 
 import java.sql.*;
 
-public class RetrieveProducts {
+public class RetrieveProductsMain {
     public static Product getproducts(int pid) throws SQLException, ProductNotFoundException {
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ministore","root","root");
         Statement statement = connection.createStatement();
@@ -23,7 +23,7 @@ public class RetrieveProducts {
     public static void main(String[] args) {
 
         try{
-            Product product = RetrieveProducts.getproducts(1);
+            Product product = RetrieveProductsMain.getproducts(1);
             System.out.println(product);
         }catch (SQLException | ProductNotFoundException e){
 //            e.printStackTrace();
