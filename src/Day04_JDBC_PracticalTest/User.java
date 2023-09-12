@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class User {
     private String username;
     private String password;
-    private String mobileNumber;
+    private long mobileNumber;
     private String emailId;
     static final String jdbcURL = "jdbc:mysql://localhost:3306/tka";
     static final String jdbcUsername = "root";
@@ -18,7 +18,7 @@ public class User {
     /*Constructor, getters, and setters for User class*/
 
     // Define a constructor for User
-    public User(String username, String password, String mobileNumber, String emailId) {
+    public User(String username, String password, long mobileNumber, String emailId) {
         this.username = username;
         this.password = password;
         this.mobileNumber = mobileNumber;
@@ -42,11 +42,11 @@ public class User {
         this.password = password;
     }
 
-    public String getMobileNumber() {
+    public long getMobileNumber() {
         return mobileNumber;
     }
 
-    public void setMobileNumber(String mobileNumber) {
+    public void setMobileNumber(long mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 
@@ -70,15 +70,13 @@ public class User {
 
     // Method to insert a new user into the database
     public static void save(User user) {
-
-
         try {
             Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
             String insertQuery = "INSERT INTO users (username, password, mobileNumber, emailId) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setString(3, user.getMobileNumber());
+            preparedStatement.setLong(3, user.getMobileNumber());
             preparedStatement.setString(4, user.getEmailId());
 
             preparedStatement.executeUpdate();
@@ -99,7 +97,7 @@ public class User {
 
             if (resultSet.next()) {
                 String password = resultSet.getString("password");
-                String mobileNumber = resultSet.getString("mobilenumber");
+                Long mobileNumber = resultSet.getLong("mobilenumber");
                 String emailId = resultSet.getString("emailid");
 
                 return new User(username, password, mobileNumber, emailId);
@@ -109,12 +107,11 @@ public class User {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
     public static void main(String[] args) {
-        User user1 = new User("aditya", "password123", "1234567890", "aditya@example.com");
+        User user1 = new User("aditya", "password123", 1234567890, "aditya@example.com");
         User.save(user1);
 
         User retrievedUser = User.get("aditya");
