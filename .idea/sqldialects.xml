@@ -7,5 +7,6 @@
     <file url="file://$PROJECT_DIR$/src/Day02_BasicJDBC_ProductRetrieve/RetrieveProductsMain.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/Day03_JDBC/CallingFunction.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/Day03_JDBC/CallingProcedure.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/Day04_JDBC_PracticalTest/User.java" dialect="GenericSQL" />
   </component>
 </project>
